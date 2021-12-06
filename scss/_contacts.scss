@@ -1,0 +1,83 @@
+.contacts {
+    padding-bottom: 192px;
+
+    &__title {
+        margin-bottom: $offset;
+    }
+
+    &__form {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        max-width: 740px;
+        margin: 0 auto;
+        margin-bottom: 116px;
+        background-color: #fff;
+        padding: 20px;
+    }
+
+    &__body {
+        background-color: $accent;
+        padding-top: 290px;
+        margin-top: -290px;
+    }
+
+    &__body-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__info {
+        width: 41%;
+        color: #fff;
+        padding-bottom: 46px;
+    }
+
+    &__body-title {
+        color: #fff;
+        box-shadow: none;
+        margin-bottom: $offset;
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 370px;
+        width: 100%;
+        border: none;
+        background: #FFFFFF;
+        box-shadow: 2px 6px 6px rgba(46, 103, 145, 0.3), 10px 12px 16px rgba(47, 81, 120, 0.2);
+        border-radius: 5px;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 29px;
+        margin-bottom: $offset;
+        color: $accent;
+        padding: 16px;
+        svg {
+            flex-shrink: 0;
+            margin-left: 8px;
+        }
+    }
+
+    &__text {
+        p {
+            margin-bottom: 25px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__map {
+        width: 59%;
+        padding-left: 40px;
+        margin-bottom: -$offset;
+
+        iframe {
+            width: 100%;
+        }
+    }
+}

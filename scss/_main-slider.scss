@@ -1,0 +1,43 @@
+.main-slider {
+    padding-top: 72px;
+    padding-bottom: 112px;
+    
+    .container {
+        position: relative;
+    }
+    
+    &__item {
+        min-width: 33%;
+        flex-shrink: 0;
+        flex-grow: 1;
+        width: auto;
+        height: 300px;
+        img {
+            height: 100%;
+            width: 100%;
+        }
+        &--big {
+            min-width: 67%;
+        }
+    }
+    
+    &__button-prev,
+    &__button-next {
+        position: absolute;
+        z-index: 6;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        transition: .3s ease;
+        cursor: pointer;
+        
+        &.swiper-button-disabled {
+            opacity: 0;
+        }
+    }
+
+    &__button-next {
+        left: auto;
+        right: 0;
+    }
+}
