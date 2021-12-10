@@ -987,6 +987,7 @@ a {
 
 .b24-widget-button-wrapper.b24-widget-button-position-bottom-right, .b24-widget-button-wrapper.b24-widget-button-position-bottom-middle, .b24-widget-button-wrapper.b24-widget-button-position-bottom-left {
   opacity: 0;
+  z-index: 19;
   -webkit-transition: opacity .3s;
   transition: opacity .3s;
 }
@@ -1000,7 +1001,7 @@ a {
   left: 0;
   width: 100%;
   top: 0;
-  z-index: 10;
+  z-index: 22;
   background-color: #fff;
   -webkit-box-shadow: 0px 6px 16px rgba(14, 26, 40, 0.1);
           box-shadow: 0px 6px 16px rgba(14, 26, 40, 0.1);
@@ -2249,7 +2250,7 @@ a {
   .services__btn {
     font-size: 18px;
     line-height: 20px;
-    padding: 16px 40px;
+    padding: 16px 2rem;
   }
   .services__btn-wrapper {
     margin-top: 46px;
@@ -2260,9 +2261,14 @@ a {
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
   .services__timing-list {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin-bottom: -50px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .services__list-title {
     margin-bottom: 16px;

@@ -32,17 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(function() {
                 $headerOverlay.classList.add('active');
-                hideScroll();
             }, 50)
         }
 
         function closeMenu() {
             $headerOverlay.classList.remove('active');
+            $headerMenu.classList.remove('active');
+            $html.classList.remove('overflow-hidden');
             
             setTimeout(function() {
                 $headerOverlay.style.display = '';
-                $headerMenu.classList.remove('active');
-                $html.classList.remove('overflow-hidden');
             }, transitionDelay)
         }
     }
@@ -154,14 +153,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Плавно возвращаем на место волны, когда скроллим снизу вверх
                     heroWave.style.transition = '.7s ease';
                     heroWave2.style.transition = '.7s ease';
-                    heroWave3.style.transition = '.7s ease';
+                    if (heroWave3) heroWave3.style.transition = '.7s ease';
                     position = minPosition;
                     position2 = minPosition2;
                     position3 = minPosition3;
                     setTimeout(function() {
                         heroWave.style.transition = '';
                         heroWave2.style.transition = '';
-                        heroWave3.style.transition = '';
+                        if (heroWave3) heroWave3.style.transition = '';
                     }, 750)
                 }
                 offset = window.pageYOffset; 
@@ -244,66 +243,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.classList.remove('active');
                 })
 
-                const $titlesWrapper = document.querySelector('.certificates__tabs-titles-wrapper');
-                const $titlesList = $titlesWrapper.querySelector('.certificates__tabs-titles');
-
-                $titlesWrapper.classList.add('swiper-container');
-                $titlesList.classList.add('swiper-wrapper');
-                
-                $tabs.forEach(item => {
-                    item.classList.add('swiper-slide');
-                    item.classList.remove('active');
-                })
-                var swiper2 = new Swiper(".certificates__tabs-titles-wrapper", {
-                    simulateTouch: false,
-                    touchRatio: 0,
-                });
                 var swiper = new Swiper(".certificates__tabs-content-wrapper", {
                     spaceBetween: 12,
                     slidesPerView: 1.2,
                     centeredSlides: true,
-                    slidesOffsetBefore: -10,
-                    thumbs: {
-                        swiper: swiper2,
-                    },
+                    slidesOffsetBefore: -30,
                 });
-                $titlesWrapper.style.transform = 'none';
-                swiper.on('beforeSlideChangeStart', function() {
-                    $titlesWrapper.style.transform = 'none';
+
+                $tabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        swiper.slideTo(+tab.dataset.tab - 1);
+                    })
                 })
-                swiper.on('slideChange', function() {
-                    $titlesWrapper.style.transform = 'none';
-                })
-                swiper.on('setTranslate', function() {
-                    $titlesWrapper.style.transform = 'none';
-                })
-                swiper.on('beforeTransitionStart', function() {
-                    $titlesWrapper.style.transform = 'none';
-                })
-                swiper.on('tap', function() {
-                    $titlesWrapper.style.transform = 'none';
-                })
-                swiper.on('touchmove', function() {
-                    $titlesWrapper.style.transform = 'none';
-                })
-                swiper2.on('beforeSlideChangeStart', function() {
-                    $titlesWrapper.style.transform = 'none';
-                })
-                swiper2.on('slideChange', function() {
-                    $titlesWrapper.style.transform = 'none';
-                })
-                swiper2.on('setTranslate', function() {
-                    $titlesWrapper.style.transform = 'none';
-                })
-                swiper2.on('beforeTransitionStart', function() {
-                    $titlesWrapper.style.transform = 'none';
-                })
-                swiper2.on('tap', function() {
-                    $titlesWrapper.style.transform = 'none';
-                })
-                swiper2.on('touchmove', function() {
-                    $titlesWrapper.style.transform = 'none';
-                })
+
+                swiper.on('slideChange', function (e) {
+                    const activeItem = e.slides[e.activeIndex].dataset.tab;
+                    const activeTitle = document.querySelector('.certificates__tabs-titles>li[data-tab="'+activeItem+'"]');
+                    $tabs.forEach(tab => {
+                        tab.classList.remove('active');
+                    })
+                    activeTitle.classList.add('active');
+                });
                 
             } else {
                 $tabs.forEach(tab => {

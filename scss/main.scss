@@ -291,10 +291,13 @@ a {
 
 .b24-widget-button-wrapper.b24-widget-button-position-bottom-right, .b24-widget-button-wrapper.b24-widget-button-position-bottom-middle, .b24-widget-button-wrapper.b24-widget-button-position-bottom-left {
     opacity: 0;
+    z-index: 19;
     transition: opacity .3s;
 }
 
-#bingc-phone-button { display: none !important; }
+#bingc-phone-button { 
+    display: none !important;
+}
 
 @import 'header';
 @import 'simplebar';
