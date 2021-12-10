@@ -38,11 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function closeMenu() {
             $headerOverlay.classList.remove('active');
-            $headerMenu.classList.remove('active');
-            $html.classList.remove('overflow-hidden');
-
+            
             setTimeout(function() {
                 $headerOverlay.style.display = '';
+                $headerMenu.classList.remove('active');
+                $html.classList.remove('overflow-hidden');
             }, transitionDelay)
         }
     }
@@ -267,6 +267,43 @@ document.addEventListener('DOMContentLoaded', () => {
                         swiper: swiper2,
                     },
                 });
+                $titlesWrapper.style.transform = 'none';
+                swiper.on('beforeSlideChangeStart', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
+                swiper.on('slideChange', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
+                swiper.on('setTranslate', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
+                swiper.on('beforeTransitionStart', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
+                swiper.on('tap', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
+                swiper.on('touchmove', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
+                swiper2.on('beforeSlideChangeStart', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
+                swiper2.on('slideChange', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
+                swiper2.on('setTranslate', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
+                swiper2.on('beforeTransitionStart', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
+                swiper2.on('tap', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
+                swiper2.on('touchmove', function() {
+                    $titlesWrapper.style.transform = 'none';
+                })
                 
             } else {
                 $tabs.forEach(tab => {
