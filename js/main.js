@@ -53,6 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth <= 600) {
             initButton($chatBtn);
             initButton($telBtn);
+        } else {
+            $chatBtn.style.opacity = '1';
+            $telBtn.style.opacity = '1';
         }
 
         function initButton(button) {
