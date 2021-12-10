@@ -85,7 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let minPosition = -50;
         let minPosition2 = -50;
-        let minPosition3 = -20;
+        let minPosition3 = -5;
+
+        let maxWidth = 689;
+        let maxWidth2 = 462;
+        let maxWidth3 = 327;
         
         let heroWave = document.querySelectorAll('.hero__wave')[0];
         let heroWave2 = document.querySelectorAll('.hero__wave')[1];
@@ -97,9 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
             heroWave = document.querySelectorAll('.hero__wave-mob')[0];
             heroWave2 = document.querySelectorAll('.hero__wave-mob')[1];
             heroWave3 = document.querySelectorAll('.hero__wave-mob')[2]
+            
             minPosition = -5;
             minPosition2 = -5;
             minPosition3 = -5;
+            
+            maxWidth = 338;
+            maxWidth2 = 278;
+            
             position = minPosition;
             position2 = minPosition2;
             position3 = minPosition3;
@@ -113,6 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         window.addEventListener('scroll', function(e) {
             if (window.pageYOffset < animatedScreenHeight) {
+                if (maxWidth <= position) step = -step;
+                if (maxWidth2 <= position2) step = -step;
+                if (maxWidth3 <= -position3) step = -step;
+
                 if (position > 0) position = minPosition;
                 if (position2 > 0) position2 = minPosition2;
                 if (position3 > 0) position3 = minPosition3;
@@ -123,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     position -= step;
                     position2 -= step / 1.5;
                     if (heroWave3) {
-                        position3 -= step * 1.2;
+                        position3 -= step;
                         heroWave3.style.left = position3 + unit;
                     }
                 } else {
@@ -132,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     position += step;
                     position2 += step / 1.5;
                     if (heroWave3) {
-                        position3 += step * 1.2;
+                        position3 += step;
                         heroWave3.style.left = position3 + unit;
                     }
                 }
@@ -149,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         heroWave.style.transition = '';
                         heroWave2.style.transition = '';
                         heroWave3.style.transition = '';
-                    }, 700)
+                    }, 750)
                 }
                 offset = window.pageYOffset; 
             }
@@ -248,7 +261,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 var swiper = new Swiper(".certificates__tabs-content-wrapper", {
                     spaceBetween: 12,
                     slidesPerView: 1.2,
-                    watchSlidesProgress: true,
                     centeredSlides: true,
                     slidesOffsetBefore: -10,
                     thumbs: {
