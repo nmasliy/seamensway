@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const $headerMenu = document.querySelector('.header__menu');
         const $headerBtn = document.querySelector('.header__menu-burger');
         const $headerCloseBtn = document.querySelector('.menu__close');
+        const $headerOverlay = document.querySelector('.header__overlay');
+        const transitionDelay = 400; 
 
         let isInit = false;
 
@@ -15,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 isInit = true;
                 $headerBtn.addEventListener('click', openMenu)
                 $headerCloseBtn.addEventListener('click', closeMenu)
+                $headerOverlay.addEventListener('click', closeMenu);
             } else {
                 window.addEventListener('resize', checkScreenWidth);
             }
@@ -25,11 +28,49 @@ document.addEventListener('DOMContentLoaded', () => {
         function openMenu() {
             $headerMenu.classList.add('active');
             $html.classList.add('overflow-hidden');
+            $headerOverlay.style.display = 'block';
+
+            setTimeout(function() {
+                $headerOverlay.classList.add('active');
+                hideScroll();
+            }, 50)
         }
 
         function closeMenu() {
+            $headerOverlay.classList.remove('active');
             $headerMenu.classList.remove('active');
             $html.classList.remove('overflow-hidden');
+
+            setTimeout(function() {
+                $headerOverlay.style.display = '';
+            }, transitionDelay)
+        }
+    }
+
+    function initShowButtons() {
+        const $chatBtn = document.querySelector('.b24-widget-button-wrapper');
+        const $telBtn = document.querySelector('.phone-button');
+
+        if (window.innerWidth <= 600) {
+            initButton($chatBtn);
+            initButton($telBtn);
+        }
+
+        function initButton(button) {
+            if (button) {
+                window.addEventListener('scroll', function(e) {
+                    toggleItemVisibility(button);
+                })
+            }
+        }
+
+
+        function toggleItemVisibility(item) {
+            if (window.pageYOffset > 600) {
+                item.style.opacity = '1';
+            } else {
+                item.style.opacity = '';
+            }
         }
     }
 
@@ -42,18 +83,26 @@ document.addEventListener('DOMContentLoaded', () => {
         let position3 = -20;
         let animatedScreenHeight = 700;
 
+        let minPosition = -50;
+        let minPosition2 = -50;
+        let minPosition3 = -20;
+        
         let heroWave = document.querySelectorAll('.hero__wave')[0];
         let heroWave2 = document.querySelectorAll('.hero__wave')[1];
         let heroWave3 = null;
 
         if (window.innerWidth <= 600) {
-            step = 3;
+            step = 6;
             animatedScreenHeight = 450;
             heroWave = document.querySelectorAll('.hero__wave-mob')[0];
             heroWave2 = document.querySelectorAll('.hero__wave-mob')[1];
             heroWave3 = document.querySelectorAll('.hero__wave-mob')[2]
-            position = -20;
-            position2 = -20;
+            minPosition = -5;
+            minPosition2 = -5;
+            minPosition3 = -5;
+            position = minPosition;
+            position2 = minPosition2;
+            position3 = minPosition3;
         }
         else if (window.innerWidth <= 1100) {
             unit = '%';
@@ -64,9 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         window.addEventListener('scroll', function(e) {
             if (window.pageYOffset < animatedScreenHeight) {
-                if (position > 0) position = -50;
-                if (position2 > 0) position2 = -50;
-                if (position3 > -15) position3 = -20;
+                if (position > 0) position = minPosition;
+                if (position2 > 0) position2 = minPosition2;
+                if (position3 > 0) position3 = minPosition3;
 
                 if (window.pageYOffset > offset) {
                     heroWave.style.left = position + unit;
@@ -89,9 +138,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
     
                 if (window.pageYOffset <= 60) {
-                    position = -50;
-                    position2 = -50;
-                    position3 = -20;
+                    // Плавно возвращаем на место волны, когда скроллим снизу вверх
+                    heroWave.style.transition = '.7s ease';
+                    heroWave2.style.transition = '.7s ease';
+                    heroWave3.style.transition = '.7s ease';
+                    position = minPosition;
+                    position2 = minPosition2;
+                    position3 = minPosition3;
+                    setTimeout(function() {
+                        heroWave.style.transition = '';
+                        heroWave2.style.transition = '';
+                        heroWave3.style.transition = '';
+                    }, 700)
                 }
                 offset = window.pageYOffset; 
             }
@@ -159,28 +217,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initCertificatesTabs() {
         const $tabs = document.querySelectorAll('.certificates__tabs-titles>li');
-        const $tabsContents = document.querySelectorAll('.certificates__tabs-content');
 
         if ($tabs.length > 0) {
-            $tabs.forEach(tab => {
-                tab.addEventListener('click', function(e) {
-                    e.preventDefault();
+            if (window.innerWidth <= 768) {
+                const $content = document.querySelector('.certificates__tabs-content-wrapper');
+                const $contentList = $content.querySelector('.certificates__tabs-content-list');
+                const $contentItems = $content.querySelectorAll('.certificates__tabs-content');
 
-                    const activeTab = document.querySelector('.certificates__tabs-titles>li.active');
-                    const activeContent = document.querySelector('.certificates__tabs-content.active');
-
-                    const id = tab.getAttribute('data-tab');
-
-                    if (activeTab) {
-                        activeTab.classList.remove('active');
-                        activeContent.classList.remove('active');
-                    }
-                    const content = document.querySelector('.certificates__tabs-content[data-tab="'+id+'"]');
-                    
-                    tab.classList.add('active');
-                    content.classList.add('active');
+                $content.classList.add('swiper-container');
+                $contentList.classList.add('swiper-wrapper');
+                $contentItems.forEach(item => {
+                    item.classList.add('swiper-slide');
+                    item.classList.remove('active');
                 })
-            })
+
+                const $titlesWrapper = document.querySelector('.certificates__tabs-titles-wrapper');
+                const $titlesList = $titlesWrapper.querySelector('.certificates__tabs-titles');
+
+                $titlesWrapper.classList.add('swiper-container');
+                $titlesList.classList.add('swiper-wrapper');
+                
+                $tabs.forEach(item => {
+                    item.classList.add('swiper-slide');
+                    item.classList.remove('active');
+                })
+                var swiper2 = new Swiper(".certificates__tabs-titles-wrapper", {
+                    simulateTouch: false,
+                    touchRatio: 0,
+                });
+                var swiper = new Swiper(".certificates__tabs-content-wrapper", {
+                    spaceBetween: 12,
+                    slidesPerView: 1.2,
+                    watchSlidesProgress: true,
+                    centeredSlides: true,
+                    slidesOffsetBefore: -10,
+                    thumbs: {
+                        swiper: swiper2,
+                    },
+                });
+                
+            } else {
+                $tabs.forEach(tab => {
+                    tab.addEventListener('click', function(e) {
+                        e.preventDefault();
+    
+                        const activeTab = document.querySelector('.certificates__tabs-titles>li.active');
+                        const activeContent = document.querySelector('.certificates__tabs-content.active');
+    
+                        const id = tab.getAttribute('data-tab');
+    
+                        if (activeTab) {
+                            activeTab.classList.remove('active');
+                            activeContent.classList.remove('active');
+                        }
+                        const content = document.querySelector('.certificates__tabs-content[data-tab="'+id+'"]');
+                        
+                        tab.classList.add('active');
+                        content.classList.add('active');
+                    })
+                })
+            }
         }
     }
 
@@ -270,4 +366,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initMainSlider();
     initCertificatesTabs();
     initButtonsAnimations();
+    initShowButtons();
 })

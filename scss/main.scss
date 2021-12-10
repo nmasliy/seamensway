@@ -1,11 +1,35 @@
 $offset: 76px;
 $accent: #80A5D0;
 $main: #0D2731;
+$baseFontSize: 20px;
+
+
+@function strip-units ($number) {
+	@if type-of($number) == "number" and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+	@return $number;
+}
+
+@function em ($value, $base: 16px, $unit: 1em) {
+	@if not unitless($value) {
+		$value: strip-units($value);
+	}
+	@if not unitless($base) {
+		$base: strip-units($base);
+	}
+	@return ($value / $base) * $unit;
+}
+
+@function rem ($value, $base: 16px) {
+	@return em($value, $base, 1rem);
+}
 
 @import 'swiper-bundle.min';
 
 html {
     box-sizing: border-box;
+    font-size: $baseFontSize;
 }
 
 *, *::before, *::after {
@@ -13,8 +37,7 @@ html {
 }
 
 body {
-    font-size: 20px;
-    line-height: 26px;
+    line-height: 1.3rem;
     font-weight: 400;
     color: $main;
     font-family: 'IBM Plex Sans', sans-serif;
@@ -46,8 +69,8 @@ a {
 }
 
 .title {
-    font-size: 70px;
-    line-height: 75px;
+    font-size: 3.5rem;
+    line-height: 3.75rem;
     font-weight: 600;
     text-shadow: 0px 20px 20px rgba(128, 165, 208, 0.3);
     color: $accent;
@@ -57,7 +80,7 @@ a {
 .container {
     max-width: 1160px;
     width: 100%;
-    padding: 0 42px;
+    padding: 0 2.1rem;
     margin: 0 auto;
 }
 
@@ -94,13 +117,29 @@ a {
     }
     &__input {
         display: block;
-        font-size: 18px;
+        font-size: 0.9rem;
         line-height: 1.2;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         padding: 12px;
         background-color: #fff;
         border-bottom: 1px solid #e5e5e5;
         outline: transparent;
+
+        &:valid:not(:placeholder-shown) {
+            color: $main;
+            border-color: $main;
+            & + .form__input-line {
+                background-color: $main;
+            }
+        }
+        
+        &:invalid:not(:placeholder-shown) {
+            color: #F67575;
+            border-color: #F77575;
+            & + .form__input-line {
+                background-color: #F77575;
+            }
+        }
     }
 
     &__btn {
@@ -108,8 +147,8 @@ a {
         background-color: rgba(20, 45, 56, 1);
         color: #fff;
         font-weight: 500;
-        font-size: 18px;
-        line-height: 23px;
+        font-size: 0.9rem;
+        line-height: 1.15rem;
         border-radius: 5px;
         &--white {
             padding: 9px 15px;
@@ -120,22 +159,22 @@ a {
         }
     }
 
+    &__input-line {
+        position: absolute;
+        bottom: 26px;
+        height: 2px;
+        left: 8px;
+        right: 8px;
+        background-color: #A2B6CC;
+    }
+
 
     &__item {
         position: relative;
-        font-size: 14px;
-        line-height: 18px;
+        font-size: 0.7rem;
+        line-height: 0.9rem;
         color: #A2B6CC;
 
-        &::after {
-            position: absolute;
-            content: "";
-            bottom: 21px;
-            height: 2px;
-            left: 8px;
-            right: 8px;
-            background-color: #A2B6CC;
-        }
         input {
             border: none;
             background: #EDF1F5;
@@ -150,8 +189,8 @@ a {
     
     &__caption {
         font-weight: 500;
-        font-size: 14px;
-        line-height: 18px;
+        font-size: 0.8rem;
+        line-height: 0.9rem;
         color: #fff;   
         margin-bottom: 15px;
     }
@@ -182,6 +221,9 @@ a {
     bottom: 130px;
     z-index: 17;
     filter: drop-shadow(0px 0px 8px rgba(128, 165, 208, 0.5)) drop-shadow(10px 16px 24px rgba(20, 45, 56, 0.2));
+    padding: 0;
+    opacity: 0;
+    transition: .3s;
 }
 
 .btn-animated {
@@ -247,6 +289,11 @@ a {
     }
 }
 
+.b24-widget-button-wrapper.b24-widget-button-position-bottom-right, .b24-widget-button-wrapper.b24-widget-button-position-bottom-middle, .b24-widget-button-wrapper.b24-widget-button-position-bottom-left {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
 #bingc-phone-button { display: none !important; }
 
 @import 'header';
@@ -258,6 +305,5 @@ a {
 @import 'reviews';
 @import 'contacts';
 @import 'footer';
-@import 'modals';
 
 @import 'media';

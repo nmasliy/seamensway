@@ -7,6 +7,10 @@
     background-color: #fff;
     box-shadow: 0px 6px 16px rgba(14, 26, 40, 0.1);
 
+    &__overlay {
+        display: none;
+    }
+    
     &__menu-burger {
         display: none;
         span {
@@ -42,8 +46,8 @@
         display: flex;
         align-items: center;
         font-weight: 500;
-        font-size: 20px;
-        line-height: 26px;
+        font-size: 1rem;
+        line-height: 1.3rem;
         letter-spacing: 0.1em;
         color: $accent;
 
@@ -69,9 +73,9 @@
 
         & > li {
             font-weight: 600;
-            font-size: 16px;
-            line-height: 21px;
-            min-width: 183px;
+            font-size: 0.8rem;
+            line-height: 1.05rem;
+            min-width: 10.4rem;
             text-transform: uppercase;
             text-align: center;
             letter-spacing: 0.015em;
@@ -86,7 +90,7 @@
 
         & > li > a {
             display: block;
-            padding: 30px 17px;
+            padding: 1.5rem 0.85rem;
         }
     }
 }

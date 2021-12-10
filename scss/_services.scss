@@ -1,5 +1,5 @@
 .services {
-    padding-bottom: 116px;
+    padding-bottom: 5.8rem;
 
     &__title {
         margin-bottom: $offset;
@@ -19,7 +19,7 @@
         background: #FFFFFF;
         box-shadow: 2px 6px 6px rgba(46, 103, 145, 0.3), 10px 12px 16px rgba(47, 81, 120, 0.2);
         border-radius: 20px;
-        max-width: 455px;
+        max-width: 22.75rem;
         width: 100%;
         margin: 0 10px;
         margin-bottom: -$offset;
@@ -44,7 +44,7 @@
     }
 
     &__list {
-        margin-bottom: 30px;
+        margin-bottom: 1.5rem;
         color: #465875;
         padding-left: 10px;
 
@@ -63,18 +63,12 @@
 
     &__list-title {
         font-weight: 600;
-        margin-bottom: 30px;
+        margin-bottom: 1.5rem;
         color: #465875;
     }
 
     &__subtitle {
-        font-weight: 500;
-        font-size: 36px;
-        line-height: 40px;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-        color: #7AA6D9;
-        margin-bottom: $offset;
+        margin-bottom: 2rem;
         word-break: break-word;
     }
 
@@ -94,11 +88,11 @@
         box-shadow: 10px 12px 16px rgba(47, 81, 120, 0.2);
         border-radius: 10px;
         text-align: center;
-        padding: 22px 26px;
+        padding: 1.1rem 1.3rem;
         font-weight: 500;
-        font-size: 22px;
-        line-height: 22px;
+        font-size: 1.1rem;
+        line-height: 1.1rem;
         color: #f8f8f8;
-        max-width: 360px;
+        max-width: 18rem;
     }
 }
