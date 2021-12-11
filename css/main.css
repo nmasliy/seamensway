@@ -907,7 +907,7 @@ a {
   transition: .5s;
   overflow: hidden;
   white-space: break-spaces;
-  cursor: none;
+  cursor: pointer;
 }
 
 .btn-animated--black {
@@ -923,50 +923,6 @@ a {
           transform: scale(0);
   opacity: 1;
   position: absolute;
-}
-
-.cursor {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: #EDF1F5;
-  -webkit-transition: .3s;
-  transition: .3s;
-  position: fixed;
-  pointer-events: none;
-  z-index: 12;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  opacity: 0;
-}
-
-.cursor.hover {
-  opacity: 1;
-}
-
-.cursor.black {
-  background: #0D2731;
-  width: 28px;
-  height: 28px;
-}
-
-.cursor-inner {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: #FF0000;
-  position: fixed;
-  pointer-events: none;
-  -webkit-transition: .3s;
-  transition: .3s;
-  z-index: 12;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  opacity: 0;
-}
-
-.cursor-inner.hover {
-  opacity: 1;
 }
 
 @-webkit-keyframes pulse-btn {

@@ -322,43 +322,6 @@ document.addEventListener('DOMContentLoaded', () => {
             addDiv.classList.add('pulse');
             this.appendChild(addDiv);
         }
-
-        function initCursor() {
-            var cursor = document.querySelector('.cursor');
-            var cursorInner = document.querySelector('.cursor-inner');
-
-            buttons.forEach(btn => {
-                
-                btn.addEventListener('mousemove', function(e){
-                    const clientX = e.clientX;
-                    const clientY = e.clientY;
-                    cursor.style.left = clientX + 'px';
-                    cursor.style.top = clientY + 'px';
-                    cursorInner.style.left = clientX + 'px';
-                    cursorInner.style.top = clientY + 'px';
-
-                    
-
-                });
-                btn.addEventListener('mouseover', function(e){
-                    cursor.classList.add('hover');
-                    cursorInner.classList.add('hover');
-                    if (btn.classList.contains('btn-animated--black')) {
-                        cursor.classList.add('black');
-                    }
-                });
-                btn.addEventListener('mouseleave', function(e){
-                    cursor.classList.remove('hover');
-                    cursorInner.classList.remove('hover');
-                    if (btn.classList.contains('btn-animated--black')) {
-                        cursor.classList.remove('black');
-                    }
-                });
-            })
-        }
-        if (window.innerWidth > 1100) {
-            initCursor();
-        }
     }
 
     function initDynamicAdapt() {
