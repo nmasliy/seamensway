@@ -54,8 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
             initButton($chatBtn);
             initButton($telBtn);
         } else {
-            $chatBtn.style.opacity = '1';
-            $telBtn.style.opacity = '1';
+            if ($chatBtn) {
+                $chatBtn.style.opacity = '1';
+                $chatBtn.style.visibility = '';
+            }
+            if ($telBtn) {
+                $telBtn.style.opacity = '1';
+                $telBtn.style.visibility = '';
+            }
         }
 
         function initButton(button) {
@@ -70,15 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
         function toggleItemVisibility(item) {
             if (window.pageYOffset > 600) {
                 item.style.opacity = '1';
+                item.style.visibility = '';
             } else {
                 item.style.opacity = '';
+                item.style.visibility = 'hidden';
             }
         }
     }
 
     function initWavesAnimations() {
         let offset = window.pageYOffset; 
-        let step = 20;
+        let step = 60;
         let unit = 'px';
         let position = -20;
         let position2 = -50;
@@ -89,16 +97,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let minPosition2 = -50;
         let minPosition3 = -5;
 
-        let maxWidth = 689;
-        let maxWidth2 = 462;
-        let maxWidth3 = 327;
+        let maxWidth = 539;
+        let maxWidth2 = 332;
+        let maxWidth3 = 157;
         
         let heroWave = document.querySelectorAll('.hero__wave')[0];
         let heroWave2 = document.querySelectorAll('.hero__wave')[1];
         let heroWave3 = null;
 
         if (window.innerWidth <= 600) {
-            step = 6;
+            step = 11;
             animatedScreenHeight = 450;
             heroWave = document.querySelectorAll('.hero__wave-mob')[0];
             heroWave2 = document.querySelectorAll('.hero__wave-mob')[1];
@@ -117,9 +125,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else if (window.innerWidth <= 1100) {
             unit = '%';
-            step = 1;
-            position = -19;
-            position2 = -40;
+            step = 7;
+
+            minPosition = -19;
+            minPosition2 = -40;
+            
+            maxWidth = 330;
+            maxWidth2 = 270;
+
+            position = minPosition;
+            position2 = minPosition2;
         }
         
         window.addEventListener('scroll', function(e) {

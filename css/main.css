@@ -668,6 +668,10 @@ button.swiper-pagination-bullet {
   backface-visibility: hidden;
 }
 
+.certificates__tabs-content::-webkit-scrollbar {
+  display: none;
+}
+
 html {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -710,6 +714,10 @@ img {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.logo img {
+  width: 7.45rem;
 }
 
 .title {
@@ -1405,10 +1413,6 @@ a {
   margin: 0 10px;
 }
 
-.hero__btn:last-child {
-  margin-left: 0;
-}
-
 .main-slider {
   padding-top: 3.6rem;
   padding-bottom: 5.8rem;
@@ -1945,8 +1949,14 @@ a {
 }
 
 @media screen and (max-width: 1440px) {
+  .hero__wave--1 {
+    top: 167px;
+  }
+  .hero__wave--2 {
+    top: 297px;
+  }
   html {
-    font-size: 17px;
+    font-size: 16px;
   }
   .header__navigation {
     margin-left: 170px;
@@ -1957,6 +1967,18 @@ a {
   }
   .navigation__list > li > a {
     padding: 30px 10px;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .hero__wave--1 {
+    top: 136px;
+  }
+  .hero__wave--2 {
+    top: 250px;
+  }
+  html {
+    font-size: 14px;
   }
 }
 
@@ -1984,7 +2006,7 @@ a {
         flex-basis: auto;
   }
   .form__input {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 18px;
   }
   .form__caption {
@@ -2322,8 +2344,8 @@ a {
     padding: 0 20px;
   }
   .hero {
-    padding-top: 6.5rem;
-    padding-bottom: 3rem;
+    padding-top: 130px;
+    padding-bottom: 60px;
   }
   .hero__waves .hero__wave--1 {
     top: 111px;
@@ -2479,16 +2501,16 @@ a {
   }
   .hero__wave-mob--1 {
     left: -5px;
-    top: 100px;
+    top: 140px;
   }
   .hero__wave-mob--2 {
     right: -5px;
-    top: 173px;
+    top: 213px;
     z-index: 2;
   }
   .hero__wave-mob--3 {
     left: -5px;
-    top: 232px;
+    top: 272px;
     z-index: 4;
   }
   .hero .hero__title-word-mob {

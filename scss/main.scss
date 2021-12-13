@@ -3,30 +3,14 @@ $accent: #80A5D0;
 $main: #0D2731;
 $baseFontSize: 20px;
 
-
-@function strip-units ($number) {
-	@if type-of($number) == "number" and not unitless($number) {
-		@return $number / ($number * 0 + 1);
-	}
-	@return $number;
-}
-
-@function em ($value, $base: 16px, $unit: 1em) {
-	@if not unitless($value) {
-		$value: strip-units($value);
-	}
-	@if not unitless($base) {
-		$base: strip-units($base);
-	}
-	@return ($value / $base) * $unit;
-}
-
-@function rem ($value, $base: 16px) {
-	@return em($value, $base, 1rem);
-}
-
 @import 'swiper-bundle.min';
 
+
+.certificates__tabs-content {
+    &::-webkit-scrollbar {
+        display: none; // Safari and Chrome
+    }
+}
 html {
     box-sizing: border-box;
     font-size: $baseFontSize;
@@ -66,6 +50,12 @@ img {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+.logo {
+    img {
+        width: 7.45rem;
+    }
 }
 
 .title {

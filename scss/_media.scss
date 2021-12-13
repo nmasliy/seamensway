@@ -41,8 +41,14 @@
 // /Hovers
 
 @media screen and (max-width: 1440px) {
+    .hero__wave--1 {
+        top: 167px;
+    }
+    .hero__wave--2 {
+        top: 297px;
+    }
     html {
-        font-size: 17px;
+        font-size: 16px;
     }
     .header {
         &__navigation {
@@ -60,8 +66,16 @@
     }
 }
 
-@media screen and (max-width: 1280px) {
-
+@media screen and (max-width: 1366px) {
+    .hero__wave--1 {
+        top: 136px;
+    }
+    .hero__wave--2 {
+        top: 250px;
+    }
+    html {
+        font-size: 14px;
+    }
 }
 @media screen and (max-width: 1200px) {
     .navigation__list {
@@ -88,7 +102,7 @@
     }
     .form {
         &__input {
-            font-size: 14px;
+            font-size: 16px;
             line-height: 18px;
         }
         &__caption {
@@ -436,8 +450,8 @@
         padding: 0 20px;
     }
     .hero {
-        padding-top: 6.5rem;
-        padding-bottom: 3rem;
+        padding-top: 130px;
+        padding-bottom: 60px;
         &__waves {
             .hero__wave--1 {
                 top: 111px;
@@ -582,16 +596,16 @@
             }
             &--1 {
                 left: -5px;
-                top: 100px;
+                top: 140px;
             }
             &--2 {
                 right: -5px;
-                top: 173px;
+                top: 213px;
                 z-index: 2;
             }
             &--3 {
                 left: -5px;
-                top: 232px;
+                top: 272px;
                 z-index: 4;
             }
         }
