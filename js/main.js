@@ -50,17 +50,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const $chatBtn = document.querySelector('.b24-widget-button-wrapper');
         const $telBtn = document.querySelector('.phone-button');
 
+        if ($chatBtn) {
+            $chatBtn.classList.add('hidden');
+        } else {
+            let attempts = 0;
+            while(attempts <= 5) {
+                setTimeout(function() {
+                    if ($chatBtn) {
+                        $chatBtn.classList.add('hidden');
+                    }
+                }, 300)
+                if ($chatBtn) {
+                    return;
+                }
+                attempts++;
+            }
+        }
+
+        $telBtn.classList.add('hidden');
+
         if (window.innerWidth <= 600) {
             initButton($chatBtn);
             initButton($telBtn);
         } else {
             if ($chatBtn) {
-                $chatBtn.style.opacity = '1';
-                $chatBtn.style.visibility = '';
+                $chatBtn.classList.remove('hidden');
             }
             if ($telBtn) {
-                $telBtn.style.opacity = '1';
-                $telBtn.style.visibility = '';
+                $telBtn.classList.remove('hidden');
             }
         }
 
@@ -74,19 +91,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         function toggleItemVisibility(item) {
-            if (window.pageYOffset > 600) {
-                item.style.opacity = '1';
-                item.style.visibility = '';
+            if (window.pageYOffset > 200) {
+                item.classList.remove('hidden');
             } else {
-                item.style.opacity = '';
-                item.style.visibility = 'hidden';
+                item.classList.add('hidden');
             }
         }
     }
 
     function initWavesAnimations() {
         let offset = window.pageYOffset; 
-        let step = 60;
+        let baseStep = 100;
+        let step = baseStep;
+        let step2 = baseStep;
+        let step3 = baseStep;
+
         let unit = 'px';
         let position = -20;
         let position2 = -50;
@@ -97,16 +116,20 @@ document.addEventListener('DOMContentLoaded', () => {
         let minPosition2 = -50;
         let minPosition3 = -5;
 
-        let maxWidth = 539;
-        let maxWidth2 = 332;
-        let maxWidth3 = 157;
+        let maxWidth = 2585;
+        let maxWidth2 = 1850;
+        let maxWidth3 = 360;
         
         let heroWave = document.querySelectorAll('.hero__wave')[0];
         let heroWave2 = document.querySelectorAll('.hero__wave')[1];
         let heroWave3 = null;
 
         if (window.innerWidth <= 600) {
-            step = 11;
+            baseStep = 12;
+            step = baseStep;
+            step2 = baseStep;
+            step3 = baseStep;
+
             animatedScreenHeight = 450;
             heroWave = document.querySelectorAll('.hero__wave-mob')[0];
             heroWave2 = document.querySelectorAll('.hero__wave-mob')[1];
@@ -116,8 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
             minPosition2 = -5;
             minPosition3 = -5;
             
-            maxWidth = 338;
-            maxWidth2 = 278;
+            maxWidth = 360;
+            maxWidth2 = 336;
             
             position = minPosition;
             position2 = minPosition2;
@@ -125,7 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else if (window.innerWidth <= 1100) {
             unit = '%';
-            step = 7;
+            baseStep = 7;
+            step = baseStep;
+            step2 = baseStep;
 
             minPosition = -19;
             minPosition2 = -40;
@@ -139,9 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         window.addEventListener('scroll', function(e) {
             if (window.pageYOffset < animatedScreenHeight) {
-                if (maxWidth <= position) step = -step;
-                if (maxWidth2 <= position2) step = -step;
-                if (maxWidth3 <= -position3) step = -step;
+                step = (-maxWidth >= position) ? 0 : baseStep; 
+                step2 = (-maxWidth2 >= position2) ? 0 : baseStep; 
+                step3 = (-maxWidth3 >= position3) ? 0 : baseStep; 
 
                 if (position > 0) position = minPosition;
                 if (position2 > 0) position2 = minPosition2;
@@ -175,11 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     position = minPosition;
                     position2 = minPosition2;
                     position3 = minPosition3;
-                    setTimeout(function() {
-                        heroWave.style.transition = '';
-                        heroWave2.style.transition = '';
-                        if (heroWave3) heroWave3.style.transition = '';
-                    }, 750)
                 }
                 offset = window.pageYOffset; 
             }

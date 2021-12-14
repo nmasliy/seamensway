@@ -904,9 +904,13 @@ a {
   -webkit-filter: drop-shadow(0px 0px 8px rgba(128, 165, 208, 0.5)) drop-shadow(10px 16px 24px rgba(20, 45, 56, 0.2));
           filter: drop-shadow(0px 0px 8px rgba(128, 165, 208, 0.5)) drop-shadow(10px 16px 24px rgba(20, 45, 56, 0.2));
   padding: 0;
+}
+
+.phone-button.hidden {
   opacity: 0;
   -webkit-transition: .3s;
   transition: .3s;
+  visibility: hidden;
 }
 
 .btn-animated {
@@ -949,11 +953,19 @@ a {
   }
 }
 
-.b24-widget-button-wrapper.b24-widget-button-position-bottom-right, .b24-widget-button-wrapper.b24-widget-button-position-bottom-middle, .b24-widget-button-wrapper.b24-widget-button-position-bottom-left {
-  opacity: 0;
+.b24-widget-button-wrapper.b24-widget-button-position-bottom-right,
+.b24-widget-button-wrapper.b24-widget-button-position-bottom-middle,
+.b24-widget-button-wrapper.b24-widget-button-position-bottom-left {
   z-index: 19;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+}
+
+.b24-widget-button-wrapper.b24-widget-button-position-bottom-right.hidden,
+.b24-widget-button-wrapper.b24-widget-button-position-bottom-middle.hidden,
+.b24-widget-button-wrapper.b24-widget-button-position-bottom-left.hidden {
+  opacity: 0;
+  -webkit-transition: .3s;
+  transition: .3s;
+  visibility: hidden;
 }
 
 #bingc-phone-button {
@@ -1848,6 +1860,7 @@ a {
 .footer__col--links {
   -ms-flex-preferred-size: 217px;
       flex-basis: 217px;
+  margin-left: 60px;
 }
 
 .footer__col--navigation {
@@ -2004,6 +2017,7 @@ a {
   .footer__col--links {
     -ms-flex-preferred-size: auto;
         flex-basis: auto;
+    margin-left: 20px;
   }
   .form__input {
     font-size: 16px;
@@ -2511,6 +2525,7 @@ a {
   .hero__wave-mob--3 {
     left: -5px;
     top: 272px;
+    margin-left: -10px;
     z-index: 4;
   }
   .hero .hero__title-word-mob {
