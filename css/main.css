@@ -1498,7 +1498,7 @@ a {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding-left: 4.75rem;
-  max-width: 46.5rem;
+  max-width: 930px;
 }
 
 .certificates__tabs-titles li {
