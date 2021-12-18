@@ -1354,6 +1354,7 @@ a {
   text-shadow: 0px 8px 12px #141A22;
   margin-bottom: 3.5rem;
   color: #fff;
+  margin-left: -10px;
   -webkit-transition: .5s;
   transition: .5s;
 }
@@ -2202,6 +2203,9 @@ a {
   .contacts__map {
     width: 100%;
     padding-left: 0;
+  }
+  .hero__title {
+    margin-left: 0;
   }
 }
 
