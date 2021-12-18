@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let heroWave3 = null;
 
         let title = document.querySelector('.hero__title');
-        let titleStep = 10;
+        let titleStep = 6;
         let titlePosition = 0;
         let maxTitleOffset = 200;
 
@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heroWave = document.querySelectorAll('.hero__wave-mob')[0];
             heroWave2 = document.querySelectorAll('.hero__wave-mob')[1];
             heroWave3 = document.querySelectorAll('.hero__wave-mob')[2]
+            titleStep = 3;
             
             minPosition = -5;
             minPosition2 = -5;
@@ -186,11 +187,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
     
-                if (window.pageYOffset <= 60) {
+                if (window.pageYOffset <= 60 && window.pageYOffset < offset) {
                     // Плавно возвращаем на место волны, когда скроллим снизу вверх
                     heroWave.style.transition = '.7s ease';
                     heroWave2.style.transition = '.7s ease';
                     if (heroWave3) heroWave3.style.transition = '.7s ease';
+                    title.style.transition = '.7s ease';
                     position = minPosition;
                     position2 = minPosition2;
                     position3 = minPosition3;
