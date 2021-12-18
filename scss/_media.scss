@@ -40,7 +40,7 @@
 }
 // /Hovers
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1536px) {
     .hero__wave--1 {
         top: 167px;
     }
@@ -50,6 +50,9 @@
     html {
         font-size: 16px;
     }
+}
+@media screen and (max-width: 1440px) {
+
     .header {
         &__navigation {
             margin-left: 170px;
@@ -271,8 +274,11 @@
             font-size: 4.5rem;
         }
         &__waves {
+            .hero__wave--1 {
+                top: 110px;
+            }
             .hero__wave--2 {
-                top: 300px;
+                top: 210px;
             }
         }
     }
@@ -631,7 +637,7 @@
             margin-bottom: 4px;
         }
         &__logo img {
-            width: 76px;
+            width: 5.4rem;
         }
         &__phone {
             font-size: 14px;

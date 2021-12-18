@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initWavesAnimations() {
         let offset = window.pageYOffset; 
-        let baseStep = 100;
+        let baseStep = 90;
         let step = baseStep;
         let step2 = baseStep;
         let step3 = baseStep;
@@ -106,6 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
         let heroWave = document.querySelectorAll('.hero__wave')[0];
         let heroWave2 = document.querySelectorAll('.hero__wave')[1];
         let heroWave3 = null;
+
+        let title = document.querySelector('.hero__title');
+        let titleStep = 10;
+        let titlePosition = 0;
+        let maxTitleOffset = 200;
 
         if (window.innerWidth <= 600) {
             baseStep = 24;
@@ -160,6 +165,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     heroWave2.style.right = position2 + unit;
                     position -= step;
                     position2 -= step / 1.5;
+                    if (titlePosition <= maxTitleOffset) {
+                        title.style.bottom = -titlePosition + 'px';
+                        titlePosition += titleStep;
+                    }
                     if (heroWave3) {
                         position3 -= step;
                         heroWave3.style.left = position3 + unit;
@@ -169,6 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     heroWave2.style.right = position2 + unit;
                     position += step;
                     position2 += step / 1.5;
+                    title.style.bottom = -titlePosition + 'px';
+                    titlePosition -= titleStep;
                     if (heroWave3) {
                         position3 += step;
                         heroWave3.style.left = position3 + unit;
@@ -183,6 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     position = minPosition;
                     position2 = minPosition2;
                     position3 = minPosition3;
+                    titlePosition = 0;
+                    title.style.bottom = titlePosition + 'px';
                 }
                 offset = window.pageYOffset; 
             }
