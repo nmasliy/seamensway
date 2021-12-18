@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initWavesAnimations() {
         let offset = window.pageYOffset; 
-        let baseStep = 90;
+        let baseStep = 8 0;
         let step = baseStep;
         let step2 = baseStep;
         let step3 = baseStep;
