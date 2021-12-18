@@ -204,21 +204,43 @@ a {
     }
 }
 
-.phone-button {
+.custom-bitrix-buttons {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     cursor: pointer;
     right: 50px;
     bottom: 130px;
     z-index: 17;
+}
+
+.custom-bitrix-button {
     filter: drop-shadow(0px 0px 8px rgba(128, 165, 208, 0.5)) drop-shadow(10px 16px 24px rgba(20, 45, 56, 0.2));
     padding: 0;
+    margin-bottom: 10px;
+    transition: .3s;
+
+    circle:nth-child(2) {
+        // animation: pulse 2s ease-out infinite;
+    }
 
     &.hidden {
         opacity: 0;
-        transition: .3s;
         visibility: hidden;
     }
 }
+
+// @keyframes pulse {
+//     from {
+//         transform: scale(1);
+//         opacity: 1;
+//     }
+//     to {
+//         transform: scale(1.5);
+//         opacity: 0;
+//     }
+// }
+
 
 .btn-animated {
     position: relative;
@@ -248,18 +270,7 @@ a {
     }
 }
 
-.b24-widget-button-wrapper.b24-widget-button-position-bottom-right,
-.b24-widget-button-wrapper.b24-widget-button-position-bottom-middle,
-.b24-widget-button-wrapper.b24-widget-button-position-bottom-left {
-    z-index: 19;
-    &.hidden {
-        opacity: 0;
-        transition: .3s;
-        visibility: hidden;
-    }
-}
-
-#bingc-phone-button { 
+#bingc-phone-button, .b24-widget-button-wrapper { 
     display: none !important;
 }
 

@@ -47,27 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initShowButtons() {
-        const $chatBtn = document.querySelector('.b24-widget-button-wrapper');
+        const $chatBtn = document.querySelector('.chat-button');
         const $telBtn = document.querySelector('.phone-button');
 
-        if ($chatBtn) {
-            $chatBtn.classList.add('hidden');
-        } else {
-            let attempts = 0;
-            while(attempts <= 5) {
-                setTimeout(function() {
-                    if ($chatBtn) {
-                        $chatBtn.classList.add('hidden');
-                    }
-                }, 300)
-                if ($chatBtn) {
-                    return;
-                }
-                attempts++;
-            }
-        }
-
         $telBtn.classList.add('hidden');
+        $chatBtn.classList.add('hidden');
 
         if (window.innerWidth <= 600) {
             initButton($chatBtn);
@@ -88,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             }
         }
-
 
         function toggleItemVisibility(item) {
             if (window.pageYOffset > 200) {
@@ -118,14 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let maxWidth = 2585;
         let maxWidth2 = 1850;
-        let maxWidth3 = 360;
+        let maxWidth3 = 310;
         
         let heroWave = document.querySelectorAll('.hero__wave')[0];
         let heroWave2 = document.querySelectorAll('.hero__wave')[1];
         let heroWave3 = null;
 
         if (window.innerWidth <= 600) {
-            baseStep = 12;
+            baseStep = 24;
             step = baseStep;
             step2 = baseStep;
             step3 = baseStep;

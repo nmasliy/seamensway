@@ -302,11 +302,8 @@
 @media screen and (max-width: 768px) {
     $offset: 60px;
 
-    .phone-button {
+    .custom-bitrix-buttons {
         right: 24px;
-    }
-    body .b24-widget-button-position-bottom-right {
-        right: 20px;
     }
 
     html {
@@ -607,7 +604,7 @@
             &--3 {
                 left: -5px;
                 top: 272px;
-                margin-left: -10px;
+                margin-left: -20px;
                 z-index: 4;
             }
         }
