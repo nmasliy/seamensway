@@ -2525,6 +2525,7 @@ a {
   .hero__wave-mob--1 {
     left: -5px;
     top: 140px;
+    z-index: 1;
   }
   .hero__wave-mob--2 {
     right: -5px;
@@ -2540,6 +2541,7 @@ a {
   .hero .hero__title-word-mob {
     display: block;
     position: relative;
+    z-index: 1;
   }
   .hero .hero__title-word-mob:last-child {
     z-index: 3;

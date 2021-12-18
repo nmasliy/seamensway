@@ -480,10 +480,6 @@
     }
 }
 
-@media screen and (max-width: 700px) {
-    
-}
-
 @media screen and (max-width: 600px) {
     .form {
         &__caption {
@@ -604,6 +600,7 @@
             &--1 {
                 left: -5px;
                 top: 140px;
+                z-index: 1;
             }
             &--2 {
                 right: -5px;
@@ -620,6 +617,7 @@
         .hero__title-word-mob {
             display: block;
             position: relative;
+            z-index: 1;
             &:last-child {
                 z-index: 3;
             }
