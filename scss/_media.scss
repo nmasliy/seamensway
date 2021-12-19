@@ -548,6 +548,7 @@
         background: transparent;
         position: relative;
         align-items: flex-start;
+        min-height: auto;
         &::before {
             position: absolute;
             content: "";
