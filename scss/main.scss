@@ -74,14 +74,6 @@ a {
     margin: 0 auto;
 }
 
-.block-scroll {
-    overflow: hidden;
-}
-
-.block-scroll body{
-    overflow: hidden;
-}
-
 .preload {
     * {
         transition: none !important;
@@ -194,16 +186,6 @@ a {
     }
 }
 
-.block-scroll {
-    overflow: hidden;
-    height: 100%;
-
-    body {
-        overflow: hidden;
-        height: 100%;
-    }
-}
-
 .custom-bitrix-buttons {
     display: flex;
     flex-direction: column;
@@ -220,27 +202,11 @@ a {
     margin-bottom: 10px;
     transition: .3s;
 
-    circle:nth-child(2) {
-        // animation: pulse 2s ease-out infinite;
-    }
-
     &.hidden {
         opacity: 0;
         visibility: hidden;
     }
 }
-
-// @keyframes pulse {
-//     from {
-//         transform: scale(1);
-//         opacity: 1;
-//     }
-//     to {
-//         transform: scale(1.5);
-//         opacity: 0;
-//     }
-// }
-
 
 .btn-animated {
     position: relative;

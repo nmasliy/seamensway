@@ -83,8 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initWavesAnimations() {
+        const hero = document.querySelector('.hero');
+        
         let offset = window.pageYOffset; 
-        let baseStep = 80;
+        let baseStep = 90;
         let step = baseStep;
         let step2 = baseStep;
         let step3 = baseStep;
@@ -93,14 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let position = -20;
         let position2 = -50;
         let position3 = -20;
-        let animatedScreenHeight = 700;
 
         let minPosition = -50;
         let minPosition2 = -50;
         let minPosition3 = -5;
 
-        let maxWidth = 2585;
-        let maxWidth2 = 1850;
+        let maxWidth = 2525;
+        let maxWidth2 = 1820;
         let maxWidth3 = 310;
         
         let heroWave = document.querySelectorAll('.hero__wave')[0];
@@ -108,21 +109,21 @@ document.addEventListener('DOMContentLoaded', () => {
         let heroWave3 = null;
 
         let title = document.querySelector('.hero__title');
-        let titleStep = 6;
+        let titleStep = 8;
         let titlePosition = 0;
         let maxTitleOffset = 200;
 
         if (window.innerWidth <= 600) {
-            baseStep = 24;
+            unit = 'px';
+            baseStep = 20;
             step = baseStep;
             step2 = baseStep;
             step3 = baseStep;
 
-            animatedScreenHeight = 450;
             heroWave = document.querySelectorAll('.hero__wave-mob')[0];
             heroWave2 = document.querySelectorAll('.hero__wave-mob')[1];
             heroWave3 = document.querySelectorAll('.hero__wave-mob')[2]
-            titleStep = 3;
+            titleStep = 6;
             
             minPosition = -5;
             minPosition2 = -5;
@@ -130,10 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             maxWidth = 360;
             maxWidth2 = 336;
-            
-            position = minPosition;
-            position2 = minPosition2;
-            position3 = minPosition3;
         }
         else if (window.innerWidth <= 1100) {
             unit = '%';
@@ -146,62 +143,48 @@ document.addEventListener('DOMContentLoaded', () => {
             
             maxWidth = 330;
             maxWidth2 = 270;
-
-            position = minPosition;
-            position2 = minPosition2;
         }
-        
-        window.addEventListener('scroll', function(e) {
-            if (window.pageYOffset < animatedScreenHeight) {
-                step = (-maxWidth >= position) ? 0 : baseStep; 
-                step2 = (-maxWidth2 >= position2) ? 0 : baseStep; 
-                step3 = (-maxWidth3 >= position3) ? 0 : baseStep; 
+        hero.addEventListener('wheel', function(e) {
 
-                if (position > 0) position = minPosition;
-                if (position2 > 0) position2 = minPosition2;
-                if (position3 > 0) position3 = minPosition3;
-
-                if (window.pageYOffset > offset) {
+            if (e.deltaY > 0) {
+                if (-maxWidth <= position) {
                     heroWave.style.left = position + unit;
-                    heroWave2.style.right = position2 + unit;
                     position -= step;
-                    position2 -= step / 1.5;
-                    if (titlePosition <= maxTitleOffset) {
-                        title.style.bottom = -titlePosition + 'px';
-                        titlePosition += titleStep;
-                    }
-                    if (heroWave3) {
-                        position3 -= step;
-                        heroWave3.style.left = position3 + unit;
-                    }
-                } else {
-                    heroWave.style.left = position + unit;
+                }
+                if (-maxWidth2 <= position2) {
                     heroWave2.style.right = position2 + unit;
-                    position += step;
-                    position2 += step / 1.5;
+                    position2 -= step / 1.5;
+                }
+                if (titlePosition <= maxTitleOffset) {
                     title.style.bottom = -titlePosition + 'px';
-                    titlePosition -= titleStep;
-                    if (heroWave3) {
-                        position3 += step;
-                        heroWave3.style.left = position3 + unit;
-                    }
+                    titlePosition += titleStep;
+                } else {
+                    document.body.classList.remove('overflow-hidden');
                 }
-    
-                if (window.pageYOffset <= 60 && window.pageYOffset < offset) {
-                    // Плавно возвращаем на место волны, когда скроллим снизу вверх
-                    heroWave.style.transition = '.7s ease';
-                    heroWave2.style.transition = '.7s ease';
-                    if (heroWave3) heroWave3.style.transition = '.7s ease';
-                    title.style.transition = '.7s ease';
-                    position = minPosition;
-                    position2 = minPosition2;
-                    position3 = minPosition3;
-                    titlePosition = 0;
-                    title.style.bottom = titlePosition + 'px';
+                if (heroWave3 && -maxWidth3 <= position3) {
+                    heroWave3.style.left = position3 + unit;
+                    position3 -= step;
                 }
-                offset = window.pageYOffset; 
-            }
+            } else {
+                heroWave.style.left = position + unit;
+                heroWave2.style.right = position2 + unit;
+                title.style.bottom = -titlePosition + 'px';
 
+                if (titlePosition > 0) {
+                    titlePosition -= titleStep;
+                }
+                if (position2 < minPosition2 && position2 < 0) {
+                    position2 += step / 1.5;
+                }
+                if (position < minPosition && position < 0) {
+                    console.log(position);
+                    position += step;
+                }
+                if (heroWave3 && position3 < minPosition3 && position3 < 0) {
+                    position3 += step;
+                    heroWave3.style.left = position3 + unit;
+                }
+            }
         })
     }
 

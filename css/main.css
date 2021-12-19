@@ -736,14 +736,6 @@ a {
   margin: 0 auto;
 }
 
-.block-scroll {
-  overflow: hidden;
-}
-
-.block-scroll body {
-  overflow: hidden;
-}
-
 .preload * {
   -webkit-transition: none !important;
   transition: none !important;
@@ -883,16 +875,6 @@ a {
 
 .overflow-hidden body {
   overflow: hidden;
-}
-
-.block-scroll {
-  overflow: hidden;
-  height: 100%;
-}
-
-.block-scroll body {
-  overflow: hidden;
-  height: 100%;
 }
 
 .custom-bitrix-buttons {
@@ -1320,11 +1302,18 @@ a {
 }
 
 .hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
   background-color: #0D2731;
-  padding-top: 8.05rem;
+  padding-top: 12rem;
   padding-bottom: 76px;
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .hero .container {
@@ -1381,15 +1370,16 @@ a {
 }
 
 .hero__wave img {
+  pointer-events: none;
   max-width: none;
 }
 
 .hero__wave--1 {
-  top: 164px;
+  top: 276px;
 }
 
 .hero__wave--2 {
-  top: 409px;
+  bottom: -10px;
   left: auto;
   right: -50px;
   z-index: 3;
@@ -1965,12 +1955,6 @@ a {
 }
 
 @media screen and (max-width: 1536px) {
-  .hero__wave--1 {
-    top: 167px;
-  }
-  .hero__wave--2 {
-    top: 297px;
-  }
   html {
     font-size: 16px;
   }
@@ -1990,11 +1974,11 @@ a {
 }
 
 @media screen and (max-width: 1366px) {
-  .hero__wave--1 {
-    top: 136px;
+  .hero {
+    padding-top: 6rem;
   }
-  .hero__wave--2 {
-    top: 250px;
+  .hero__wave--1 {
+    top: 185px;
   }
   html {
     font-size: 14px;
@@ -2060,6 +2044,9 @@ a {
   .main-slider__item--big {
     width: 65%;
   }
+  .hero {
+    padding-top: 8rem;
+  }
   .hero__title {
     font-size: 118px;
   }
@@ -2068,7 +2055,6 @@ a {
   }
   .hero__waves .hero__wave--2 {
     right: -40%;
-    top: 362px;
   }
   .header {
     padding: 17px 0;
@@ -2171,6 +2157,9 @@ a {
     line-height: 2rem;
     letter-spacing: 0.07em;
   }
+  .hero {
+    padding-top: 12rem;
+  }
   .hero__subtitle {
     font-size: 1.3rem;
     line-height: 1.8rem;
@@ -2179,10 +2168,10 @@ a {
     font-size: 4.5rem;
   }
   .hero__waves .hero__wave--1 {
-    top: 110px;
+    top: 243px;
   }
   .hero__waves .hero__wave--2 {
-    top: 210px;
+    bottom: -33px;
   }
 }
 
@@ -2370,12 +2359,6 @@ a {
     padding-top: 130px;
     padding-bottom: 60px;
   }
-  .hero__waves .hero__wave--1 {
-    top: 111px;
-  }
-  .hero__waves .hero__wave--2 {
-    top: 215px;
-  }
   .hero__title {
     font-weight: bold;
     font-size: 2.9rem;
@@ -2477,6 +2460,9 @@ a {
   .hero {
     background: transparent;
     position: relative;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   .hero::before {
     position: absolute;
@@ -2518,6 +2504,8 @@ a {
     position: absolute;
     -webkit-filter: drop-shadow(0px -4px 10px rgba(14, 26, 40, 0.5));
             filter: drop-shadow(0px -4px 10px rgba(14, 26, 40, 0.5));
+    -webkit-transition: .5s ease;
+    transition: .5s ease;
   }
   .hero__wave-mob img {
     max-width: none;

@@ -41,12 +41,6 @@
 // /Hovers
 
 @media screen and (max-width: 1536px) {
-    .hero__wave--1 {
-        top: 167px;
-    }
-    .hero__wave--2 {
-        top: 297px;
-    }
     html {
         font-size: 16px;
     }
@@ -70,11 +64,11 @@
 }
 
 @media screen and (max-width: 1366px) {
-    .hero__wave--1 {
-        top: 136px;
-    }
-    .hero__wave--2 {
-        top: 250px;
+    .hero {
+        padding-top: 6rem;
+        &__wave--1 {
+            top: 185px;
+        }
     }
     html {
         font-size: 14px;
@@ -148,6 +142,7 @@
         }
     }
     .hero {
+        padding-top: 8rem;
         &__title {
             font-size: 118px;
         }
@@ -157,7 +152,6 @@
             }
             .hero__wave--2 {
                 right: -40%;
-                top: 362px;
             }
         }
     }
@@ -266,6 +260,7 @@
         letter-spacing: 0.07em;
     }
     .hero {
+        padding-top: 12rem;
         &__subtitle {
             font-size: 1.3rem;
             line-height: 1.8rem;
@@ -275,10 +270,10 @@
         }
         &__waves {
             .hero__wave--1 {
-                top: 110px;
+                top: 243px;
             }
             .hero__wave--2 {
-                top: 210px;
+                bottom: -33px;
             }
         }
     }
@@ -459,14 +454,6 @@
     .hero {
         padding-top: 130px;
         padding-bottom: 60px;
-        &__waves {
-            .hero__wave--1 {
-                top: 111px;
-            }
-            .hero__wave--2 {
-                top: 215px;
-            }
-        }
         &__title {
             font-weight: bold;
             font-size: 2.9rem;
@@ -560,6 +547,7 @@
     .hero {
         background: transparent;
         position: relative;
+        align-items: flex-start;
         &::before {
             position: absolute;
             content: "";
@@ -594,6 +582,7 @@
         &__wave-mob {
             position: absolute;
             filter: drop-shadow(0px -4px 10px rgba(14, 26, 40, 0.5));
+            transition: .5s ease;
             img {
                 max-width: none;
             }

@@ -1,9 +1,12 @@
 .hero {
+    display: flex;
+    align-items: center;
     position: relative;
     background-color: $main;
-    padding-top: 8.05rem;
+    padding-top: 12rem;
     padding-bottom: $offset;
     overflow: hidden;
+    min-height: 100vh;
 
     .container {
         max-width: 1050px;
@@ -51,16 +54,17 @@
         z-index: 1;
         transition: .5s;
         filter: drop-shadow(0px -6px 16px rgba(14, 26, 40, 0.5));
-
+        
         img {
+            pointer-events: none;
             max-width: none;
         }
         
         &--1 {
-            top: 164px;
+            top: 276px;
         }
         &--2 {
-            top: 409px;
+            bottom: -10px;
             left: auto;
             right: -50px;
             z-index: 3;
