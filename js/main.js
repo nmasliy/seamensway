@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
-
     function initWavesAnimations() {
         const hero = document.querySelector('.hero');
         
@@ -113,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let titlePosition = 0;
         let maxTitleOffset = 200;
 
+        // Setup on other screens 
         if (window.innerWidth <= 600) {
             unit = 'px';
             baseStep = 20;
@@ -144,48 +144,109 @@ document.addEventListener('DOMContentLoaded', () => {
             maxWidth = 330;
             maxWidth2 = 270;
         }
-        hero.addEventListener('wheel', function(e) {
 
-            if (e.deltaY > 0) {
-                if (-maxWidth <= position) {
+        // Tablet - touch events animation
+        if (window.innerWidth <= 1024) {
+            baseStep = 100;
+            step = baseStep;
+            step2 = baseStep;
+            step3 = baseStep;
+            let maxTitleOffset = 100;
+
+            titleStep = 20;
+
+            let currentY, lastY;
+        
+            hero.addEventListener('touchstart', function(e) {
+                currentY = e.touches[0].clientY;
+            })
+            hero.addEventListener('touchend', function(e) {
+                lastY = e.changedTouches[0].clientY;
+
+                if(currentY > lastY + 5){
+                    if (-maxWidth <= position) {
+                        heroWave.style.left = position + unit;
+                        position -= step;
+                    }
+                    if (-maxWidth2 <= position2) {
+                        heroWave2.style.right = position2 + unit;
+                        position2 -= step / 1.5;
+                    }
+                    if (titlePosition <= maxTitleOffset) {
+                        title.style.bottom = -titlePosition + 'px';
+                        titlePosition += titleStep;
+                    } else {
+                        document.body.classList.remove('overflow-hidden');
+                    }
+                    if (heroWave3 && -maxWidth3 <= position3) {
+                        heroWave3.style.left = position3 + unit;
+                        position3 -= step;
+                    }
+
+                } else if(currentY < lastY - 5){
                     heroWave.style.left = position + unit;
-                    position -= step;
-                }
-                if (-maxWidth2 <= position2) {
                     heroWave2.style.right = position2 + unit;
-                    position2 -= step / 1.5;
-                }
-                if (titlePosition <= maxTitleOffset) {
                     title.style.bottom = -titlePosition + 'px';
-                    titlePosition += titleStep;
-                } else {
-                    document.body.classList.remove('overflow-hidden');
-                }
-                if (heroWave3 && -maxWidth3 <= position3) {
-                    heroWave3.style.left = position3 + unit;
-                    position3 -= step;
-                }
-            } else {
-                heroWave.style.left = position + unit;
-                heroWave2.style.right = position2 + unit;
-                title.style.bottom = -titlePosition + 'px';
 
-                if (titlePosition > 0) {
-                    titlePosition -= titleStep;
+                    if (titlePosition > 0) {
+                        titlePosition -= titleStep;
+                    }
+                    if (position2 < minPosition2 && position2 < 0) {
+                        position2 += step / 1.5;
+                    }
+                    if (position < minPosition && position < 0) {
+                        position += step;
+                    }
+                    if (heroWave3 && position3 < minPosition3 && position3 < 0) {
+                        position3 += step;
+                        heroWave3.style.left = position3 + unit;
+                    }
                 }
-                if (position2 < minPosition2 && position2 < 0) {
-                    position2 += step / 1.5;
+            })
+        } 
+        // Desktop - mousewheel events animation
+        else {
+            hero.addEventListener('wheel', function(e) {
+                if (e.deltaY > 0) {
+                    if (-maxWidth <= position) {
+                        heroWave.style.left = position + unit;
+                        position -= step;
+                    }
+                    if (-maxWidth2 <= position2) {
+                        heroWave2.style.right = position2 + unit;
+                        position2 -= step / 1.5;
+                    }
+                    if (titlePosition <= maxTitleOffset) {
+                        title.style.bottom = -titlePosition + 'px';
+                        titlePosition += titleStep;
+                    } else {
+                        document.body.classList.remove('overflow-hidden');
+                    }
+                    if (heroWave3 && -maxWidth3 <= position3) {
+                        heroWave3.style.left = position3 + unit;
+                        position3 -= step;
+                    }
+                } else {
+                    heroWave.style.left = position + unit;
+                    heroWave2.style.right = position2 + unit;
+                    title.style.bottom = -titlePosition + 'px';
+    
+                    if (titlePosition > 0) {
+                        titlePosition -= titleStep;
+                    }
+                    if (position2 < minPosition2 && position2 < 0) {
+                        position2 += step / 1.5;
+                    }
+                    if (position < minPosition && position < 0) {
+                        position += step;
+                    }
+                    if (heroWave3 && position3 < minPosition3 && position3 < 0) {
+                        position3 += step;
+                        heroWave3.style.left = position3 + unit;
+                    }
                 }
-                if (position < minPosition && position < 0) {
-                    console.log(position);
-                    position += step;
-                }
-                if (heroWave3 && position3 < minPosition3 && position3 < 0) {
-                    position3 += step;
-                    heroWave3.style.left = position3 + unit;
-                }
-            }
-        })
+            })
+        }
     }
 
     function initMainSlider() {
