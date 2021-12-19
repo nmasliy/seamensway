@@ -191,13 +191,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (titlePosition > 0) {
                         titlePosition -= titleStep;
                     }
-                    if (position2 < minPosition2 && position2 < 0) {
+                    if (position2 < minPosition2 && position2 + step < 0) {
                         position2 += step / 1.5;
                     }
-                    if (position < minPosition && position < 0) {
+                    if (position < minPosition && position + step < 0) {
                         position += step;
                     }
-                    if (heroWave3 && position3 < minPosition3 && position3 < 0) {
+                    if (heroWave3 && position3 < minPosition3 && position3 + step < 0) {
                         position3 += step;
                         heroWave3.style.left = position3 + unit;
                     }
