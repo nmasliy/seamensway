@@ -406,6 +406,13 @@ document.addEventListener('DOMContentLoaded', () => {
         da.init();
     }
 
+    function scrollTopBeforePageLoading() {
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+    }
+    
+    scrollTopBeforePageLoading();
     disableTransitionsBeforePageLoading();
     
     initDynamicAdapt()
