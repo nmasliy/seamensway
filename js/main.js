@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             step = baseStep;
             step2 = baseStep;
             step3 = baseStep;
-            let maxTitleOffset = 100;
+            let maxTitleOffset = 80;
 
             titleStep = 20;
 
@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0);
         }
     }
-    
+
     scrollTopBeforePageLoading();
     disableTransitionsBeforePageLoading();
     
