@@ -49,16 +49,8 @@
 
     .header {
         &__navigation {
-            margin-left: 170px;
+            margin-left: 150px;
             margin-right: auto;
-        }
-    }
-    .navigation__list {
-        & > li {
-            min-width: 120px;
-            &  > a {
-                padding: 30px 10px;
-            }
         }
     }
 }

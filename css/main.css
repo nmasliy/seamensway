@@ -1962,14 +1962,8 @@ a {
 
 @media screen and (max-width: 1440px) {
   .header__navigation {
-    margin-left: 170px;
+    margin-left: 150px;
     margin-right: auto;
-  }
-  .navigation__list > li {
-    min-width: 120px;
-  }
-  .navigation__list > li > a {
-    padding: 30px 10px;
   }
 }
 

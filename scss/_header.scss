@@ -10,7 +10,7 @@
     &__overlay {
         display: none;
     }
-    
+
     &__menu-burger {
         display: none;
         span {
@@ -66,6 +66,7 @@
 }
 
 .navigation {
+    // margin-left: 27px;
     &__list {
         display: flex;
         justify-content: space-between;
