@@ -48,11 +48,11 @@
         font-weight: 500;
         font-size: 1rem;
         line-height: 1.3rem;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.015em;
         color: $accent;
 
         svg {
-            margin-right: 6px;
+            margin-right: 20px;
             flex-shrink: 0;
         }
     }

@@ -1014,12 +1014,12 @@ a {
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.3rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.015em;
   color: #80A5D0;
 }
 
 .header__phone svg {
-  margin-right: 6px;
+  margin-right: 20px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
